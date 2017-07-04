@@ -84,21 +84,67 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 
 		/* Companies. */
 
+
+		/**
+		 * get_companies function.
+		 *
+		 * @access public
+		 * @return void
+		 */
 		public function get_companies() {
+
+			$request = $this->base_uri . '/core/companies';
+
+			return $this->fetch( $request );
 
 		}
 
+
+		/**
+		 * get_company function.
+		 *
+		 * @access public
+		 * @param mixed $company_id
+		 * @return void
+		 */
 		public function get_company( $company_id ) {
+
+			$request = $this->base_uri . '/core/companies/' . $company_id;
+
+			return $this->fetch( $request );
 
 		}
 
 		/* People. */
 
-		public function get_people() {
+
+		/**
+		 * get_people function.
+		 *
+		 * @access public
+		 * @param mixed $company_id
+		 * @return void
+		 */
+		public function get_people( $company_id ) {
+
+			$request = $this->base_uri . '/core/companies/' . $company_id . '/people';
+
+			return $this->fetch( $request );
 
 		}
 
+		/**
+		 * get_person function.
+		 *
+		 * @access public
+		 * @param mixed $person_id
+		 * @return void
+		 */
 		public function get_person( $person_id ) {
+
+				$request = $this->base_uri . '/core/people/' . $person_id;
+
+			return $this->fetch( $request );
 
 		}
 
