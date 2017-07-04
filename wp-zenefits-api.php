@@ -44,7 +44,7 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 		 * @access private
 		 * @static
 		 */
-		static private $base_uri = 'https://api.zenefits.com/';
+		static private $base_uri = 'https://api.zenefits.com';
 
 		/**
 		 * __construct function.
@@ -78,6 +78,7 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 				return new WP_Error( 'response-error', sprintf( __( 'Server response code: %d', 'wp-zenefits-api' ), $code ) );
 			}
 			$body = wp_remote_retrieve_body( $response );
+
 			return json_decode( $body );
 		}
 
@@ -103,38 +104,107 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 
 		/* Employments. */
 
+
+		/**
+		 * get_employments function.
+		 *
+		 * @access public
+		 * @param mixed $person_id
+		 * @return void
+		 */
 		public function get_employments( $person_id ) {
+
+			$request = $this->base_uri . '/core/people/' . $person_id . '/employments';
+
+			return $this->fetch( $request );
 
 		}
 
 		/* Company Bank Accounts. */
 
+
+		/**
+		 * get_company_bank_account function.
+		 *
+		 * @access public
+		 * @param mixed $company_id
+		 * @return void
+		 */
 		public function get_company_bank_account( $company_id ) {
+
+			$request = $this->base_uri . '/core/companies/' . $company_id . '/company_banks';
+
+			return $this->fetch( $request );
 
 		}
 
 		/* Employee Bank Accounts. */
 
+
+		/**
+		 * get_employee_bank_account function.
+		 *
+		 * @access public
+		 * @param mixed $person_id
+		 * @return void
+		 */
 		public function get_employee_bank_account( $person_id ) {
+
+			$request = $this->base_uri . '/core/people/' . $person_id . '/banks';
+
+			return $this->fetch( $request );
 
 		}
 
 		/* Departments. */
 
+
+		/**
+		 * get_departments function.
+		 *
+		 * @access public
+		 * @param mixed $department_id
+		 * @return void
+		 */
 		public function get_departments( $department_id ) {
-			// companies/1/departments
+
+			$request = $this->base_uri . '/companies/' . $department_id . '/departments';
+
+			return $this->fetch( $request );
 		}
 
 		/* Locations. */
 
-		public function get_locations() {
+
+		/**
+		 * get_locations function.
+		 *
+		 * @access public
+		  * @param mixed $company_id
+		 * @return void
+		 */
+		public function get_locations( $company_id ) {
+
+			$request = $this->base_uri . '/core/companies/' . $company_id . '/locations';
+
+			return $this->fetch( $request );
 
 		}
 
 		/* Me. */
 
+
+		/**
+		 * Get Me.
+		 *
+		 * @access public
+		 * @return void
+		 */
 		public function get_me() {
-			// /core/me
+
+			$request = $this->base_uri . '/core/me';
+
+			return $this->fetch( $request );
 		}
 
 
