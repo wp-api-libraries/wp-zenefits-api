@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Zenefits API (http://help.papertrailapp.com/kb/how-it-works/http-api/)
+ * WP Zenefits API (https://developers.zenefits.com/v1.0/docs)
  *
  * @package wp-zenefits-api
  */
@@ -81,6 +81,140 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 
 			return json_decode( $body );
 		}
+		
+		/* PLATFORM. */
+
+		/**
+		 * get_applications function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function get_applications() {
+
+			$request = $this->base_uri . '/platform/applications';
+			return $this->fetch( $request );
+
+		}
+
+		/**
+		 * get_company_installs function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function get_company_installs() {
+
+			$request = $this->base_uri . '/platform/company_installs';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * set_install_custom_fields function.
+		 *
+		 * @access public
+		 * @param mixed $install_id
+		 * @return void
+		 */
+		public function set_install_custom_fields( $install_id ) {
+
+			$request = $this->base_uri . '/platform/company_installs/'.$install_id.'/fields_changes/';
+			return $this->fetch( $request );
+
+		}
+
+		/**
+		 * set_install_status function.
+		 *
+		 * @access public
+		 * @param mixed $installation_id
+		 * @return void
+		 */
+		public function set_install_status( $installation_id ) {
+
+			$request = $this->base_uri . '/platform/company_installs/'.$installation_id.'/status_changes/';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * get_person_subscriptions function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function get_person_subscriptions() {
+
+			$request = $this->base_uri . '/platform/person_subscriptions';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * set_subscription_custom_fields function.
+		 *
+		 * @access public
+		 * @param mixed $subscription_id
+		 * @return void
+		 */
+		public function set_subscription_custom_fields( $subscription_id ) {
+
+			$request = $this->base_uri . '/platform/person_subscriptions/'.$subscription_id.'/fields_changes/';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * set_subscription_status function.
+		 *
+		 * @access public
+		 * @param mixed $subscription_id
+		 * @return void
+		 */
+		public function set_subscription_status( $subscription_id ) {
+
+			$request = $this->base_uri . '/platform/person_subscriptions/'.$subscription_id.'/status_changes/';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * get_flows function.
+		 *
+		 * @access public
+		 * @param mixed $subscription_id
+		 * @return void
+		 */
+		public function get_flows( $subscription_id ) {
+
+			$request = $this->base_uri . '/platform/person_subscriptions/'.$subscription_id.'/flows';
+			return $this->fetch( $request );
+
+		}
+
+		/**
+		 * set_flow_custom_fields function.
+		 *
+		 * @access public
+		 * @param mixed $subscription_id
+		 * @return void
+		 */
+		public function set_flow_custom_fields( $subscription_id ) {
+
+			$request = $this->base_uri . '/platform/flows/'.$subscription_id.'/fields_changes/';
+			return $this->fetch( $request );
+
+		}
+
+
+		/**
+		 * trigger_new_flow function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function trigger_new_flow() {
+
+			$request = $this->base_uri . '/platform/flows/';
+			return $this->fetch( $request );
+		}
+
 
 		/* Companies. */
 
