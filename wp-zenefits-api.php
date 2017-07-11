@@ -82,6 +82,33 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 			return json_decode( $body );
 		}
 
+		/* OAUTH. */
+
+		/**
+		 * get_token function.
+		 *
+		 * @access public
+		 * @param mixed $grant_type
+		 * @param mixed $refresh_token
+		 * @param mixed $client_id
+		 * @param mixed $client_secret
+		 * @return void
+		 */
+		public function get_token( $grant_type, $refresh_token, $client_id, $client_secret ) {
+			$request = 'https://secure.zenefits.com/oauth2/token/';
+			return $this->fetch( $request );
+		}
+
+		/**
+		 * get_example_sync_button_html function.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function get_example_sync_button_html() {
+			echo '<a href="https://secure.zenefits.com/oauth2/platform-authorize/?client_id={{ client_id }}%26scope=platform%20companies%20people%26response_type=code%26state={{ zenefits_state_token }}"><img alt="Sync with Zenefits" height="42" width="200" src="https://secure.zenefits.com/static/img/sync-with-zenefits-platform-button.png" srcset="https://secure.zenefits.com/static/img/sync-with-zenefits-platform-button.png 1x, https://secure.zenefits.com/static/img/sync-with-zenefits-platform-button@2x.png 2x" style="border:none;"/></a>';
+		}
+
 		/* PLATFORM. */
 
 		/**
