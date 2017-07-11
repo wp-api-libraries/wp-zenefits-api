@@ -81,7 +81,7 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 
 			return json_decode( $body );
 		}
-		
+
 		/* PLATFORM. */
 
 		/**
@@ -346,9 +346,9 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 		 * @param mixed $department_id
 		 * @return void
 		 */
-		public function get_departments( $department_id ) {
+		public function get_departments( $company_id ) {
 
-			$request = $this->base_uri . '/companies/' . $department_id . '/departments';
+			$request = $this->base_uri . '/companies/' . $company_id . '/departments';
 
 			return $this->fetch( $request );
 		}
