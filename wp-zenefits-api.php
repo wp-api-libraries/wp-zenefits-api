@@ -1,8 +1,9 @@
 <?php
 /**
- * WP Zenefits API (https://developers.zenefits.com/v1.0/docs)
+ * WP Zenefits API
  *
- * @package wp-zenefits-api
+ * @link https://developers.zenefits.com/v1.0/docs API Docs
+ * @package WP-API-Libraries\WP-Zenefits-API
  */
 
 /*
@@ -25,6 +26,8 @@ if ( ! class_exists( 'ZenefitsAPI' ) ) {
 
 	/**
 	 * ZenefitsAPI Class.
+	 *
+	 * @link https://developers.zenefits.com/v1.0/docs API Docs
 	 */
 	class ZenefitsAPI {
 
